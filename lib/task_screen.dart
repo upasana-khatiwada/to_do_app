@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/add_task.dart';
-import 'package:to_do_app/task.dart';
 import 'package:to_do_app/task_list.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/task_data.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
 
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [];
   // @override
-  //final Widget buildButtonSheet = const SizedBox();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +28,13 @@ class _TasksScreenState extends State<TasksScreen> {
                   child: Container(
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: AddTaskScreen(
-                      (newTaskTitle) {
-                        setState(() {
-                          tasks.add(Task(name: newTaskTitle));
-                        });
-                        Navigator.pop(context);
-                      },
+                    child: const AddTaskScreen(
+                      // (newTaskTitle) {
+                      //   setState(() {
+                      //     tasks.add(Task(name: newTaskTitle));
+                      //   });
+                      //   Navigator.pop(context);
+                      // },
                     ),
                   ),
                 ),
@@ -76,7 +69,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                 Text('${tasks.length} Tasks',
+                 Text('${Provider.of<TaskData>(context).taskCount} Tasks',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -94,7 +87,9 @@ class _TasksScreenState extends State<TasksScreen> {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     )),
-                child:  TaskList( tasks: tasks),
+                child:  const TaskList( 
+
+                ),
               ),
             ),
           ),
