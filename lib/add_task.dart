@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
- import 'package:to_do_app/task_data.dart';
+import 'package:to_do_app/task_data.dart';
 import 'package:provider/provider.dart';
-
-
+//import 'package:to_do_app/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({super.key});
 
-  //const AddTaskScreen({super.key});
-//  final Function addTaskCallback;
-//  const AddTaskScreen(this.addTaskCallback, {super.key});
   @override
   Widget build(BuildContext context) {
-    String newTaskTitle;
+    late String newTaskTitle;
     return Container(
       color: Colors.white,
       child: Padding(
@@ -38,10 +34,10 @@ class AddTaskScreen extends StatelessWidget {
                       color: Color.fromARGB(255, 160, 194, 251),
                       fontWeight: FontWeight.bold),
                 ),
-                 TextField(
+                TextField(
                   autofocus: true,
                   textAlign: TextAlign.center,
-                  onChanged: (newText){
+                  onChanged: (newText) {
                     newTaskTitle = newText;
                   },
                 ),
@@ -49,8 +45,8 @@ class AddTaskScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFC6DAFC)),
                   onPressed: () {
-                    //Provider.of<TaskData>(context).addTask(newTaskTitle);
-
+                    Provider.of<TaskData>(context,listen: false).addTask(newTaskTitle);
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     'Add',
@@ -59,7 +55,6 @@ class AddTaskScreen extends StatelessWidget {
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
-                  
                 )
               ],
             ),

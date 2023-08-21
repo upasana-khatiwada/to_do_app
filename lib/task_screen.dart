@@ -29,13 +29,13 @@ class TasksScreen extends StatelessWidget {
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
                     child: const AddTaskScreen(
-                      // (newTaskTitle) {
-                      //   setState(() {
-                      //     tasks.add(Task(name: newTaskTitle));
-                      //   });
-                      //   Navigator.pop(context);
-                      // },
-                    ),
+                        // (newTaskTitle) {
+                        //   setState(() {
+                        //     tasks.add(Task(name: newTaskTitle));
+                        //   });
+                        //   Navigator.pop(context);
+                        // },
+                        ),
                   ),
                 ),
               );
@@ -69,11 +69,13 @@ class TasksScreen extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                 Text('${Provider.of<TaskData>(context).taskCount} Tasks',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),)
+                Text(
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                )
               ],
             ),
           ),
@@ -87,9 +89,7 @@ class TasksScreen extends StatelessWidget {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     )),
-                child:  const TaskList( 
-
-                ),
+                child: const TaskList(),
               ),
             ),
           ),
